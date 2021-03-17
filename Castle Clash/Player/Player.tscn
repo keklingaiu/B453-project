@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Boy  sheet wlaking and Idle.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=33]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 2.03836
-height = 2.97137
+radius = 3.3644
+height = 7.77252
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle_down"
 length = 0.4
 loop = true
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ 52, 62, 72, 82 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle_left"
 length = 0.4
 loop = true
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ 50, 60, 70, 80 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle_right"
 length = 0.4
 loop = true
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "values": [ 53, 63, 73, 83 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle_up"
 length = 0.4
 loop = true
@@ -75,8 +75,7 @@ tracks/0/keys = {
 "values": [ 51, 61, 71, 81 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Walk_down"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -92,8 +91,7 @@ tracks/0/keys = {
 "values": [ 12, 22, 32, 52 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Walk_left"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -109,8 +107,7 @@ tracks/0/keys = {
 "values": [ 10, 20, 30, 50 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Walk_right"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -126,8 +123,7 @@ tracks/0/keys = {
 "values": [ 13, 23, 33, 53 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Walk_up"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -143,8 +139,73 @@ tracks/0/keys = {
 "values": [ 11, 21, 31, 51 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Idle_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=14]
+blend_point_0/node = SubResource( 10 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 11 )
+blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_2/node = SubResource( 12 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 13 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Walk_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=19]
+blend_point_0/node = SubResource( 15 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 16 )
+blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_2/node = SubResource( 17 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 18 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachine" id=22]
+states/Idle/node = SubResource( 14 )
+states/Idle/position = Vector2( 355, 92 )
+states/Walk/node = SubResource( 19 )
+states/Walk/position = Vector2( 569.5, 89.75 )
+transitions = [ "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 636.163, 166.837 )
+position = Vector2( 633.803, 170.848 )
+scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 33 )
 __meta__ = {
 "_edit_group_": true
@@ -154,19 +215,27 @@ __meta__ = {
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 10
-frame = 60
+frame = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 25.2932 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle_down = SubResource( 7 )
-anims/Idle_left = SubResource( 9 )
-anims/Idle_right = SubResource( 8 )
-anims/Idle_up = SubResource( 6 )
-anims/Walk_down = SubResource( 3 )
-anims/Walk_left = SubResource( 5 )
-anims/Walk_right = SubResource( 4 )
-anims/Walk_up = SubResource( 2 )
+anims/Idle_down = SubResource( 2 )
+anims/Idle_left = SubResource( 3 )
+anims/Idle_right = SubResource( 4 )
+anims/Idle_up = SubResource( 5 )
+anims/Walk_down = SubResource( 6 )
+anims/Walk_left = SubResource( 7 )
+anims/Walk_right = SubResource( 8 )
+anims/Walk_up = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 22 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 23 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Walk/blend_position = Vector2( 0, 0 )

@@ -9,17 +9,7 @@ var stepsToWalk = 800
 
 #var path = "user://time.json"
 
-func _ready():
-	randomize()
-	create_level()
-	
-func create_level():
-	var levelWalker = LevelWalker.new(Vector2(18, 10), borders)
-	var level = levelWalker.walk(stepsToWalk)
-	levelWalker.queue_free()
-	for location in level:
-		tileMap.set_cellv(location, -1)
-	tileMap.update_bitmask_region(borders.position, borders.end)
+
 	
 #func save_time():
 #	var save_time = File.new()

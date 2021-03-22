@@ -4,8 +4,8 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=33]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.3644
-height = 7.77252
+radius = 7.66232
+height = 8.61767
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle_down"
@@ -204,21 +204,18 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 633.803, 170.848 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 633.803, 170.458 )
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 33 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 10
-frame = 80
+frame = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 25.2932 )
+position = Vector2( 0.53833, 22.2307 )
 rotation = 1.5708
 shape = SubResource( 1 )
 

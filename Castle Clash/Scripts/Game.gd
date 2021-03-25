@@ -10,7 +10,7 @@ var stepsToWalk = 800
 #var path = "user://time.json"
 
 func _ready():
-	
+	randomize()
 	create_level()
 	
 func create_level():

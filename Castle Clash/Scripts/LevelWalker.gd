@@ -16,6 +16,16 @@ func _init(start_pos, new_borders):
 	step_history.append(position)
 	borderOfMap = new_borders
 	
+func walk(steps):
+	for step in steps:
+		if randf() <= 0.25 or steps_since_turn >= 4:
+			switch_dir()
+			
+		if step():
+			step_history.append(position)
+		else:
+			switch_dir()
+	return step_history
 	
 func step():
 	var target_pos = position + direction

@@ -44,3 +44,6 @@ func switch_dir():
 	direction = directions.pop_front()
 	while not borderOfMap.has_point(position + direction):
 		direction = directions.pop_front()
+		
+func generate_room(position):
+	var sizeOfRoom = Vector2(randi() % 6 + 1, randi() % 6 + 1)

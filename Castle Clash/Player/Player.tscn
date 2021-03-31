@@ -211,7 +211,7 @@ script = ExtResource( 33 )
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 10
-frame = 70
+frame = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0561523, 19.4063 )
@@ -243,3 +243,4 @@ limit_top = -32
 limit_right = 1312
 limit_bottom = 736
 limit_smoothed = true
+smoothing_enabled = true

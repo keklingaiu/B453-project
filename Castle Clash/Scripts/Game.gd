@@ -20,14 +20,15 @@ func create_level():
 	var levelWalker = LevelWalker.new(Vector2(18, 10), borders)
 	var level = levelWalker.walk(stepsToWalk)
 	
+	var exit = Exit.instance()
+	add_child(exit)
+	exit.position = levelWalker.grab_last_room().position * 32
+	exit.connect("enter_next_lvl", self, "reload_level")
+	
 	var player = Player.instance()
 	add_child(player)
 	player.position = level.front() * 32
 	
-	var exit = Exit.instance()
-	add_child(exit)
-	exit.position = levelWalker.rooms.back().position * 32
-	exit.connect("enter_next_lvl", self, "reload_level")
 	
 	levelWalker.queue_free()
 	for location in level:

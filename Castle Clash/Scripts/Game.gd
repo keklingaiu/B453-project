@@ -3,7 +3,7 @@ extends Node2D
 onready var tileMap = $Walls
 
 var borders = Rect2(1, 1, 37, 20)
-var stepsToWalk = 800
+var stepsToWalk = 500
 
 #var realTime = OS.get_time()
 

@@ -10,6 +10,8 @@ var borderOfMap = Rect2()
 var step_history = []
 var steps_since_turn = 0
 
+var randomRoomSize = (randi() % 5 + 1)
+
 func _init(start_pos, new_borders):
 	assert(new_borders.has_point(start_pos))
 	position = start_pos
@@ -19,7 +21,7 @@ func _init(start_pos, new_borders):
 func walk(steps):
 	generate_room(position)
 	for step in steps:
-		if randf() <= 0.25 or steps_since_turn >= 4:
+		if randf() >= 0.2 and steps_since_turn >= 10:
 			switch_dir()
 			
 		if step():
@@ -48,8 +50,8 @@ func switch_dir():
 		direction = directions.pop_front()
 		
 func generate_room(position):
-	var sizeOfRoom = Vector2(randi() % 6 + 1, randi() % 6 + 1)
-	var leftCornerOfRoom = int(round(position - sizeOfRoom/2))
+	var sizeOfRoom = Vector2(randomRoomSize, randomRoomSize)
+	var leftCornerOfRoom = (position - sizeOfRoom/2).ceil()
 	for y in sizeOfRoom.y:
 		for x in sizeOfRoom.x:
 			var newStep = leftCornerOfRoom + Vector2(x, y)

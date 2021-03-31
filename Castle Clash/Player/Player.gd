@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MAX_MOVE_SPEED = 90
+const MAX_MOVE_SPEED = 150
 
 var velocity = Vector2.ZERO
 

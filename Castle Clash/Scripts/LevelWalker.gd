@@ -10,6 +10,8 @@ var borderOfMap = Rect2()
 var step_history = []
 var steps_since_turn = 0
 
+var rooms = []
+
 var randomRoomSize = (randi() % 4+3)
 
 func _init(start_pos, new_borders):
@@ -19,7 +21,7 @@ func _init(start_pos, new_borders):
 	borderOfMap = new_borders
 	
 func walk(steps):
-	generate_room(position)
+	place_room(position)
 	for step in steps:
 		if steps_since_turn >= 9:
 			switch_dir()
@@ -40,7 +42,7 @@ func step():
 		return false
 	
 func switch_dir():
-	generate_room(position)
+	place_room(position)
 	steps_since_turn = 0
 	var directions = moveableDirections.duplicate()
 	directions.erase(direction)
@@ -49,7 +51,7 @@ func switch_dir():
 	while not borderOfMap.has_point(position + direction):
 		direction = directions.pop_front()
 		
-func generate_room(position):
+func place_room(position):
 	var sizeOfRoom = Vector2(randomRoomSize, randomRoomSize)
 	var leftCornerOfRoom = (position - sizeOfRoom/2).ceil()
 	for y in sizeOfRoom.y:

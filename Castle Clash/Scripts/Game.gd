@@ -24,6 +24,10 @@ func create_level():
 	add_child(player)
 	player.position = level.front() * 32
 	
+	var exit = Exit.instance()
+	add_child(exit)
+	exit.position = level.rooms
+	
 	levelWalker.queue_free()
 	for location in level:
 		tileMap.set_cellv(location, -1)

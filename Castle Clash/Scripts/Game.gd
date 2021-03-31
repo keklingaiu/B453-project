@@ -1,6 +1,7 @@
 extends Node2D
 
 const Player = preload("res://Player/Player.tscn")
+const Exit = preload("res://ExitButton/ExitButton.tscn")
 
 onready var tileMap = $Walls
 

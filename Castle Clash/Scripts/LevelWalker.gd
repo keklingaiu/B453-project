@@ -51,11 +51,24 @@ func switch_dir():
 	while not borderOfMap.has_point(position + direction):
 		direction = directions.pop_front()
 		
+func generate_room(position, size):
+	return {position = position, size = size}
+	
+		
 func place_room(position):
 	var sizeOfRoom = Vector2(randomRoomSize, randomRoomSize)
 	var leftCornerOfRoom = (position - sizeOfRoom/2).ceil()
+	rooms.append(generate_room(position, sizeOfRoom))
 	for y in sizeOfRoom.y:
 		for x in sizeOfRoom.x:
 			var newStep = leftCornerOfRoom + Vector2(x, y)
 			if borderOfMap.has_point(newStep):
 				step_history.append(newStep)
+				
+func grab_last_room():
+	var last_room = rooms.pop_front()
+	var start_pos = step_history.front()
+	for room in rooms:
+		if start_pos.distance_to(room.position) > start_pos.distance_to(last_room.position):
+			last_room = room
+	return last_room

@@ -26,13 +26,16 @@ func create_level():
 	
 	var exit = Exit.instance()
 	add_child(exit)
-	exit.position = level.rooms
+	exit.position = levelWalker.rooms.back().position * 32
+	exit.connect("enter_next_lvl", self, "reload_level")
 	
 	levelWalker.queue_free()
 	for location in level:
 		tileMap.set_cellv(location, -1)
 	tileMap.update_bitmask_region(borders.position, borders.end)
 	
+func reload_level():
+	get_tree().reload_current_scene()	
 #func save_time():
 #	var save_time = File.new()
 #	save_time.open(path, File.WRITE)

@@ -4,8 +4,7 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=33]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 7.66232
-height = 8.61767
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle_down"
@@ -212,10 +211,10 @@ script = ExtResource( 33 )
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 10
-frame = 60
+frame = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.53833, 22.2307 )
+position = Vector2( -0.0561523, 19.4063 )
 rotation = 1.5708
 shape = SubResource( 1 )
 

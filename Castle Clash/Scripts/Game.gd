@@ -1,9 +1,11 @@
 extends Node2D
 
+const Player = preload("res://Player/Player.tscn")
+
 onready var tileMap = $Walls
 
 var borders = Rect2(1, 1, 37, 20)
-var stepsToWalk = 800
+var stepsToWalk = 500
 
 #var realTime = OS.get_time()
 
@@ -16,6 +18,11 @@ func _ready():
 func create_level():
 	var levelWalker = LevelWalker.new(Vector2(18, 10), borders)
 	var level = levelWalker.walk(stepsToWalk)
+	
+	var player = Player.instance()
+	add_child(player)
+	player.position = level.front() * 32
+	
 	levelWalker.queue_free()
 	for location in level:
 		tileMap.set_cellv(location, -1)

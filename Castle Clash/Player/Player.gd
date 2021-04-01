@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const MAX_MOVE_SPEED = 150
+const MAX_MOVE_SPEED = 90
 
 var velocity = Vector2.ZERO
-
+onready var walls = get_node("/root/Game/Walls")
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -20,8 +20,9 @@ func _physics_process(delta):
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationState.travel("Walk")
 		velocity = input_vector * MAX_MOVE_SPEED
+		print(velocity.x)
 	else:
 		animationState.travel("Idle")
 		velocity = Vector2.ZERO
 		
-	move_and_collide(velocity * delta)
+	move_and_slide(velocity)

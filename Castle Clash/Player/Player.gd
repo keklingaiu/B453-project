@@ -20,7 +20,7 @@ func _physics_process(delta):
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationState.travel("Walk")
 		velocity = input_vector * MAX_MOVE_SPEED
-		print(velocity.x)
+		
 	else:
 		animationState.travel("Idle")
 		velocity = Vector2.ZERO

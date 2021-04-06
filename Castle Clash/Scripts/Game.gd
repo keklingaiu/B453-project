@@ -14,10 +14,11 @@ var realTime = OS.get_time()
 #var path = "user://time.json"
 
 func _ready():
+	randomize()
 	create_level()
 
-func _process(_delta):
-	get_game_time()
+#func _process(_delta):
+#	get_game_time()
 	
 
 	
@@ -44,12 +45,12 @@ func reload_level():
 	get_tree().reload_current_scene()	
 
 	
-func get_game_time():
-	var minute = 30
-	realTime = OS.get_time()
-	if minute == realTime.minute:
-		randomize()
-		reload_level()		
+#func get_game_time():
+#	var minute = 30
+#	realTime = OS.get_time()
+#	if minute == realTime.minute:
+#		randomize()
+#		reload_level()		
 	
 	
 	

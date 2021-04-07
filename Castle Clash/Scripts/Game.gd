@@ -14,7 +14,8 @@ var realTime = OS.get_time()
 #var path = "user://time.json"
 
 func _ready():
-	randomize()
+	#randomize()
+	Server.ReturnSeed( , get_instance_id())
 	create_level()
 
 #func _process(_delta):
@@ -51,6 +52,9 @@ func reload_level():
 #	if minute == realTime.minute:
 #		randomize()
 #		reload_level()		
+
+func setSeed(newSeed):
+	return newSeed
 	
 	
 	

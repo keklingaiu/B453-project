@@ -19,6 +19,11 @@ func _OnConnectionFailed():
 	
 func _OnConnectionSucceeded():
 	print("Successfully connected.")
+	
+remote func ReturnSeed(s_seed, requester):
+	instance_from_id(requester).setSeed(s_seed)
+	
+
 
 
 	

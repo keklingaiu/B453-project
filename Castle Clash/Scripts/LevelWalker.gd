@@ -14,11 +14,13 @@ var rooms = []
 
 var randomRoomSize = (randi() % 4+3)
 
-func _init(start_pos, new_borders):
+func _init(start_pos, new_borders, serverSeed):
+	seed(serverSeed)
 	assert(new_borders.has_point(start_pos))
 	position = start_pos
 	step_history.append(position)
 	borderOfMap = new_borders
+	
 	
 func walk(steps):
 	place_room(position)

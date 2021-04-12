@@ -9,12 +9,12 @@ var borders = Rect2(1, 1, 37, 20)
 var stepsToWalk = 500
 
 var realTime = OS.get_time()
+
+var serverSeed = 0
 	
-#func _ready():
-#	create_level()
 	
 func create_level():
-	var levelWalker = LevelWalker.new(Vector2(18, 10), borders)
+	var levelWalker = LevelWalker.new(Vector2(18, 10), borders, serverSeed)
 	var level = levelWalker.walk(stepsToWalk)
 	
 	var exit = Exit.instance()
@@ -38,7 +38,8 @@ func reload_level():
 
 
 func setSeed(newSeed):
-	return newSeed
+	serverSeed = newSeed
+	seed(newSeed)
 	
 	
 

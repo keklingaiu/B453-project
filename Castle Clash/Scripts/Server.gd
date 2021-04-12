@@ -4,6 +4,9 @@ var network = NetworkedMultiplayerENet.new()
 var ip = "127.0.0.1"
 var port = 4802
 
+
+signal connected
+
 func _ready():
 	ConnectToServer()
 	
@@ -20,10 +23,15 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Successfully connected.")
 	
+	emit_signal("connected")
+	
+	
 remote func ReturnSeed(s_seed, requester):
 	instance_from_id(requester).setSeed(s_seed)
 	
-
+remote func requestSeed(requester):
+	var player_id = get_tree().get_rpc_sender_id()
+	rpc_id(1, "GenSeed", requester)
 
 
 	

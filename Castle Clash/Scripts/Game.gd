@@ -9,19 +9,9 @@ var borders = Rect2(1, 1, 37, 20)
 var stepsToWalk = 500
 
 var realTime = OS.get_time()
-
-
-#var path = "user://time.json"
-
-func _ready():
-	#randomize()
-	Server.ReturnSeed( , get_instance_id())
-	create_level()
-
-#func _process(_delta):
-#	get_game_time()
 	
-
+#func _ready():
+#	create_level()
 	
 func create_level():
 	var levelWalker = LevelWalker.new(Vector2(18, 10), borders)
@@ -45,21 +35,14 @@ func create_level():
 func reload_level():
 	get_tree().reload_current_scene()	
 
-	
-#func get_game_time():
-#	var minute = 30
-#	realTime = OS.get_time()
-#	if minute == realTime.minute:
-#		randomize()
-#		reload_level()		
+
 
 func setSeed(newSeed):
 	return newSeed
 	
 	
-	
-	
-	
 
-	
 
+func _on_Server_connected():
+	Server.requestSeed(get_instance_id())
+	create_level()

@@ -32,6 +32,16 @@ remote func ReturnSeed(s_seed, requester):
 remote func requestSeed(requester):
 	var player_id = get_tree().get_rpc_sender_id()
 	rpc_id(1, "GenSeed", requester)
+	
+remote func requestBestTime(requester):
+	
+	rpc_id(1, "BestTime", requester)
+	
+remote func ReturnBestTime(requester, s_time):
+	instance_from_id(requester).setTime(s_time)
 
+remote func SendTime(requester, time):
+	rpc_id(1, "AddTime", requester, time)
+	print(time)
 
 	

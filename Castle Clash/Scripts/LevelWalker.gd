@@ -7,6 +7,8 @@ var position = Vector2.ZERO
 var direction = Vector2.RIGHT
 var borderOfMap = Rect2()
 
+const Enemy = preload("res://ExitButton/ExitButton.tscn")
+
 var step_history = []
 var steps_since_turn = 0
 
@@ -66,6 +68,9 @@ func place_room(position):
 			var newStep = leftCornerOfRoom + Vector2(x, y)
 			if borderOfMap.has_point(newStep):
 				step_history.append(newStep)
+				
+
+			
 				
 func grab_last_room():
 	var last_room = rooms.pop_front()

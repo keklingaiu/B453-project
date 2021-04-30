@@ -201,7 +201,9 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 position = Vector2( 633.803, 170.458 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 33 )

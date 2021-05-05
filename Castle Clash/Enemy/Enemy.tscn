@@ -58,7 +58,7 @@ script = ExtResource( 7 )
 rotation = 1.5708
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 9 )
-frame = 4
+frame = 7
 speed_scale = 2.0
 playing = true
 
